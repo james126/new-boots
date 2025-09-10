@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Property Development Feasibility Calculator</title>
+            <style>
+                    @media print {
+                                @page {
+                                        size: A4;
+                                        margin: 2cm;
+                                }
+                                .no-print {
+                                            display: none !important;
+                                    }
+                                body {
+                                            font-size: 11pt !important;
+                                    }
+                        }
+                   
+                    * {
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                        }
+                   
+                    body {
+                                font-family: 'Times New Roman', Times, serif;
+                                font-size: 11pt;
+                                line-height: 1.15;
+                                max-width: 210mm;
+                                margin: 0 auto;
+                                padding: 20px;
+                                background-color: #f5f5f5;
+                        }
+                   
+                    .container {
+                                background: white;
+                                padding: 30px;
+                                margin-bottom: 20px;
+                        }
+                   
+                    h1 {
+                                font-size: 24pt;
+                                margin-bottom: 20px;
+                                text-align: center;
+                        }
+                   
+                    h2 {
+                                font-size: 16pt;
+                                margin-top: 20px;
+                                margin-bottom: 15px;
+                        }
+                   
+                    h3 {
+                                font-size: 13pt;
+                                margin-top: 15px;
+                                margin-bottom: 10px;
+                        }
+                   
+                    .input-group {
+                                margin-bottom: 12px;
+                        }
+                   
+                    label {
+                                display: inline-block;
+                                width: 200px;
+                                margin-right: 10px;
+                        }
+                   
+                    input[type="text"],
+                    input[type="number"],
+                    input[type="date"],
+                    select {
+                                width: 200px;
+                                padding: 5px;
+                                font-family: 'Times New Roman', Times, serif;
+                                font-size: 11pt;
+                        }
+                   
+                    input[type="number"] {
+                                text-align: right;
+                        }
+                   
+                    button {
+                                padding: 8px 20px;
+                                font-family: 'Times New Roman', Times, serif;
+                                font-size: 11pt;
+                                cursor: pointer;
+                                margin-right: 10px;
+                                margin-top: 10px;
+                        }
+                   
+                    .typology-row {
+                                display: grid;
+                                grid-template-columns: 40px 150px 100px 100px 150px 150px 100px;
+                                gap: 10px;
+                                margin-bottom: 10px;
+                                align-items: center;
+                        }
+                   
+                    .typology-header {
+                                font-weight: bold;
+                                padding-bottom: 10px;
+                        }
+                   
+                    .typology-row input {
+                                width: 100%;
+                                padding: 5px;
+                        }
+                   
+                    .results-section {
+                                margin-top: 30px;
+                                padding: 20px;
+                                background-color: #f9f9f9;
+                        }
+                   
+                    .metric {
+                                display: flex;
+                                justify-content: space-between;
+                                padding: 8px 0;
+                        }
+                   
+                    .metric-label {
+                                font-weight: normal;
+                        }
+                   
+                    .metric-value {
+                                font-weight: bold;
+                                text-align: right;
+                        }
+                   
+                    .profit {
+                                color: green;
+                        }
+                   
+                    .loss {
+                                color: red;
+                        }
+                   
+                    .summary-grid {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 30px;
+                                margin-top: 20px;
+                        }
+                   
+                    .optimisation-section {
+                                margin-top: 30px;
+                                padding: 20px;
+                                background-color: #fffef0;
+                        }
+                   
+                    .scenario-comparison {
+                                margin-top: 20px;
+                        }
+                   
+                    table {
+                                width: 100%;
+                                margin-top: 15px;
+                                border-collapse: collapse;
+                        }
+                   
+                    th, td {
+                                padding: 8px;
+                                text-align: left;
+                        }
+                   
+                    th {
+                                background-color: #f0f0f0;
+                                font-weight: bold;
+                        }
+                   
+                    td.number {
+                                text-align: right;
+                        }
+                   
+                    .button-group {
+                                margin-top: 20px;
+                        }
+                   
+                    .info-text {
+                                font-style: italic;
+                                margin: 10px 0;
+                                color: #666;
+                        }
+                   
+                    .remove-btn {
+                                background-color: #ff6b6b;
+                                color: white;
+                                border: none;
+                                padding: 5px 10px;
+                                cursor: pointer;
+                        }
+                   
+                    .add-btn {
+                                background-color: #4CAF50;
+                                color: white;
+                                border: none;
+                        }
+                   
+                    @media screen and (max-width: 1024px) {
+                                .typology-row {
+                                            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                                    }
+                        }
+            </style>
+</head>
+<body>
+        <div class="container no-print">
+                    <h1>Property Development Feasibility Calculator</h1>
+                   
+                    <h2>Project Information</h2>
+                    <div class="input-group">
+                            <label>Project Name:</label>
+                            <input type="text" id="projectName" value="Rotorua">
+                    </div>
+                    <div class="input-group">
+                            <label>Site Area (sqm):</label>
+                            <input type="number" id="siteArea" value="1000">
+                    </div>
+                    <div class="input-group">
+                            <label>Project Start Date:</label>
+                            <input type="date" id="startDate" value="2026-07-05">
+                    </div>
+                    <div class="input-group">
+                            <label>Duration (months):</label>
+                            <input type="number" id="duration" value="12">
+                    </div>
+                   
+                    <h2>Development Costs</h2>
+                    <div class="input-group">
+                            <label>Land Cost (NZD):</label>
+                            <input type="number" id="landCost" value="447826">
+                    </div>
+                    <div class="input-group">
+                            <label>Civil & Infrastructure (NZD):</label>
+                            <input type="number" id="civilCost" value="80000">
+                    </div>
+                    <div class="input-group">
+                            <label>Construction Cost per sqm (NZD):</label>
+                            <input type="number" id="constructionPerSqm" value="2300">
+                    </div>
+                    <div class="input-group">
+                            <label>Consultants & Design (NZD):</label>
+                            <input type="number" id="consultantsCost" value="100000">
+                    </div>
+                    <div class="input-group">
+                            <label>Council Costs (NZD):</label>
+                            <input type="number" id="councilCost" value="100000">
+                    </div>
+                    <div class="input-group">
+                            <label>Contingency (%):</label>
+                            <input type="number" id="contingencyPercent" value="10" min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                            <label>Marketing & Sales (NZD):</label>
+                            <input type="number" id="marketingCost" value="20000">
+                    </div>
+                    <div class="input-group">
+                            <label>Finance Rate (% p.a.):</label>
+                            <input type="number" id="financeRate" value="8.5" step="0.1">
+                    </div>
+                   
+                    <h2>Unit Typologies</h2>
+                    <p class="info-text">Configure different unit types to optimise your development mix</p>
+                   
+                    <div id="typologyContainer">
+                            <div class="typology-row typology-header">
+                                    <div></div>
+                                    <div>Type Name</div>
+                                    <div>Units</div>
+                                    <div>Size (sqm)</div>
+                                    <div>Sale Price (NZD)</div>
+                                    <div>Price/sqm</div>
+                                    <div>Action</div>
+                            </div>
+                    </div>
+                    <button class="add-btn" onclick="addTypology()">Add Typology</button>
+                   
+                    <div class="button-group">
+                            <button onclick="calculateFeasibility()">Calculate Feasibility</button>
+                            <button onclick="optimiseConfiguration()">Optimise Configuration</button>
+                            <button onclick="generateReport()">Generate Report</button>
+                            <button onclick="saveConfiguration()">Save Configuration</button>
+                            <button onclick="loadDefaults()">Load Defaults</button>
+                    </div>
+            </div>
+       
+        <div class="container results-section" id="results" style="display: none;">
+                    <h2>Feasibility Results</h2>
+                   
+                    <div class="summary-grid">
+                            <div>
+                                    <h3>Development Summary</h3>
+                                    <div class="metric">
+                                            <span class="metric-label">Total Units:</span>
+                                            <span class="metric-value" id="totalUnits">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">Total GFA (sqm):</span>
+                                            <span class="metric-value" id="totalGFA">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">Site Coverage:</span>
+                                            <span class="metric-value" id="siteCoverage">-</span>
+                                    </div>
+                            </div>
+                           
+                            <div>
+                                    <h3>Cost Analysis</h3>
+                                    <div class="metric">
+                                            <span class="metric-label">Land Cost:</span>
+                                            <span class="metric-value" id="landCostResult">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">Construction Cost:</span>
+                                            <span class="metric-value" id="constructionCostResult">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">Other Costs:</span>
+                                            <span class="metric-value" id="otherCostsResult">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">Finance Cost:</span>
+                                            <span class="metric-value" id="financeCostResult">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label"><strong>Total Development Cost:</strong></span>
+                                            <span class="metric-value" id="totalCostResult">-</span>
+                                    </div>
+                            </div>
+                    </div>
+                   
+                    <div class="summary-grid">
+                            <div>
+                                    <h3>Revenue Analysis</h3>
+                                    <div class="metric">
+                                            <span class="metric-label">Gross Sales Revenue:</span>
+                                            <span class="metric-value" id="grossRevenue">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">GST (15%):</span>
+                                            <span class="metric-value" id="gstAmount">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">Sales Commission (3.5%):</span>
+                                            <span class="metric-value" id="salesCommission">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label"><strong>Net Revenue:</strong></span>
+                                            <span class="metric-value" id="netRevenue">-</span>
+                                    </div>
+                            </div>
+                           
+                            <div>
+                                    <h3>Profitability Metrics</h3>
+                                    <div class="metric">
+                                            <span class="metric-label">Gross Profit:</span>
+                                            <span class="metric-value" id="grossProfit">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">Gross Margin (%):</span>
+                                            <span class="metric-value" id="grossMargin">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label"><strong>Net Profit:</strong></span>
+                                            <span class="metric-value" id="netProfit">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label"><strong>ROCE (%):</strong></span>
+                                            <span class="metric-value" id="roce">-</span>
+                                    </div>
+                                    <div class="metric">
+                                            <span class="metric-label">Profit per Unit:</span>
+                                            <span class="metric-value" id="profitPerUnit">-</span>
+                                    </div>
+                            </div>
+                    </div>
+                   
+                    <h3>Unit Mix Breakdown</h3>
+                    <table id="unitMixTable">
+                            <thead>
+                                <tr>
+                                            <th>Type</th>
+                                            <th>Units</th>
+                                            <th>Size (sqm)</th>
+                                            <th>Total Area</th>
+                                            <th>Unit Price</th>
+                                            <th>Total Revenue</th>
+                                            <th>% of Revenue</th>
+                                    </tr>
+                        </thead>
+                            <tbody id="unitMixBody">
+                        </tbody>
+                    </table>
+            </div>
+       
+        <div class="container optimisation-section" id="optimisation" style="display: none;">
+                    <h2>Configuration Optimisation</h2>
+                    <p class="info-text">Optimised configuration based on maximum ROCE</p>
+                   
+                    <div id="optimisationResults"></div>
+                   
+                    <h3>Scenario Comparison</h3>
+                    <table id="scenarioTable">
+                            <thead>
+                                <tr>
+                                            <th>Scenario</th>
+                                            <th>Units</th>
+                                            <th>GFA (sqm)</th>
+                                            <th>Total Cost</th>
+                                            <th>Net Revenue</th>
+                                            <th>Net Profit</th>
+                                            <th>ROCE (%)</th>
+                                    </tr>
+                        </thead>
+                            <tbody id="scenarioBody">
+                        </tbody>
+                    </table>
+            </div>
+       
+        <script>
+                // Initial typologies based on CSV data
+let typologies = [
+    { name: '2 Bedroom', units: 3, size: 75, price: 485000 },
+    { name: '3 Bedroom', units: 2, size: 100, price: 615000 }
+];
+
+// Initialise the page
+document.addEventListener('DOMContentLoaded', function() {
+    loadDefaults();
+    renderTypologies();
+});
+
+function formatCurrency(amount) {
+    return 'NZD ' + new Intl.NumberFormat('en-NZ', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(amount);
+}
+
+function formatPercent(value) {
+    return value.toFixed(2) + '%';
+}
+
+function addTypology() {
+    typologies.push({
+        name: 'New Type',
+        units: 1,
+        size: 85,
+        price: 500000
+    });
+    renderTypologies();
+}
+
+function removeTypology(index) {
+    if (typologies.length > 1) {
+        typologies.splice(index, 1);
+        renderTypologies();
+    }
+}
+
+function renderTypologies() {
+    const container = document.getElementById('typologyContainer');
+    // Keep header
+    const header = container.querySelector('.typology-header');
+    container.innerHTML = '';
+    container.appendChild(header);
+
+    typologies.forEach((typ, index) => {
+        const row = document.createElement('div');
+        row.className = 'typology-row';
+        row.innerHTML = `
+                                        <div>${index + 1}</div>
+                                        <input type="text" value="${typ.name}" onchange="updateTypology(${index}, 'name', this.value)">
+                                        <input type="number" value="${typ.units}" onchange="updateTypology(${index}, 'units', parseFloat(this.value))">
+                                        <input type="number" value="${typ.size}" onchange="updateTypology(${index}, 'size', parseFloat(this.value))">
+                                        <input type="number" value="${typ.price}" onchange="updateTypology(${index}, 'price', parseFloat(this.value))">
+                                        <input type="number" value="${(typ.price / typ.size).toFixed(0)}" readonly style="background-color: #f0f0f0;">
+                                        <button class="remove-btn" onclick="removeTypology(${index})">Remove</button>
+                                `;
+        container.appendChild(row);
+    });
+}
+
+function updateTypology(index, field, value) {
+    typologies[index][field] = value;
+    renderTypologies();
+}
+
+function calculateFeasibility() {
+    // Get inputs
+    const landCost = parseFloat(document.getElementById('landCost').value) || 0;
+    const civilCost = parseFloat(document.getElementById('civilCost').value) || 0;
+    const constructionPerSqm = parseFloat(document.getElementById('constructionPerSqm').value) || 0;
+    const consultantsCost = parseFloat(document.getElementById('consultantsCost').value) || 0;
+    const councilCost = parseFloat(document.getElementById('councilCost').value) || 0;
+    const contingencyPercent = parseFloat(document.getElementById('contingencyPercent').value) || 0;
+    const marketingCost = parseFloat(document.getElementById('marketingCost').value) || 0;
+    const financeRate = parseFloat(document.getElementById('financeRate').value) || 0;
+    const duration = parseFloat(document.getElementById('duration').value) || 12;
+    const siteArea = parseFloat(document.getElementById('siteArea').value) || 1000;
+
+    // Calculate totals from typologies
+    let totalUnits = 0;
+    let totalGFA = 0;
+    let grossRevenue = 0;
+
+    typologies.forEach(typ => {
+        totalUnits += typ.units;
+        totalGFA += typ.units * typ.size;
+        grossRevenue += typ.units * typ.price;
+    });
+
+    // Calculate costs
+    const constructionCost = totalGFA * constructionPerSqm;
+    const baseConstructionCost = constructionCost;
+    const contingency = baseConstructionCost * (contingencyPercent / 100);
+
+    const prefinanceCosts = landCost + civilCost + constructionCost +
+        consultantsCost + councilCost + contingency + marketingCost;
+
+    // Calculate finance cost (simplified interest during construction)
+    const averageOutstanding = prefinanceCosts * 0.6; // Assume 60% average outstanding
+    const financeCost = averageOutstanding * (financeRate / 100) * (duration / 12);
+
+    const totalCost = prefinanceCosts + financeCost;
+
+    // Calculate revenue
+    const gst = grossRevenue * 0.15;
+    const commission = grossRevenue * 0.035;
+    const netRevenue = grossRevenue - gst - commission;
+
+    // Calculate profits
+    const grossProfit = grossRevenue - totalCost;    // Gross profit before GST/commission
+    const netProfit = netRevenue - totalCost;              // Net profit after GST/commission
+    const grossMargin = (grossProfit / grossRevenue) * 100;
+    const netMargin = (netProfit / grossRevenue) * 100;
+    const roce = (netProfit / totalCost) * 100;    // ROCE based on net profit
+    const profitPerUnit = totalUnits > 0 ? netProfit / totalUnits : 0;
+
+    // Update display
+    document.getElementById('totalUnits').textContent = totalUnits;
+    document.getElementById('totalGFA').textContent = totalGFA.toFixed(0) + ' sqm';
+    document.getElementById('siteCoverage').textContent = formatPercent((totalGFA / siteArea) * 100);
+
+    document.getElementById('landCostResult').textContent = formatCurrency(landCost);
+    document.getElementById('constructionCostResult').textContent = formatCurrency(constructionCost);
+    document.getElementById('otherCostsResult').textContent = formatCurrency(civilCost + consultantsCost + councilCost + contingency + marketingCost);
+    document.getElementById('financeCostResult').textContent = formatCurrency(financeCost);
+    document.getElementById('totalCostResult').textContent = formatCurrency(totalCost);
+
+    document.getElementById('grossRevenue').textContent = formatCurrency(grossRevenue);
+    document.getElementById('gstAmount').textContent = formatCurrency(gst);
+    document.getElementById('salesCommission').textContent = formatCurrency(commission);
+    document.getElementById('netRevenue').textContent = formatCurrency(netRevenue);
+
+    document.getElementById('grossProfit').textContent = formatCurrency(grossProfit);
+    document.getElementById('grossProfit').className = grossProfit > 0 ? 'metric-value profit' : 'metric-value loss';
+    document.getElementById('grossMargin').textContent = formatPercent(grossMargin);
+    document.getElementById('netProfit').textContent = formatCurrency(netProfit);
+    document.getElementById('netProfit').className = netProfit > 0 ? 'metric-value profit' : 'metric-value loss';
+    document.getElementById('roce').textContent = formatPercent(roce);
+    document.getElementById('profitPerUnit').textContent = formatCurrency(profitPerUnit);
+
+    // Update unit mix table
+    const tbody = document.getElementById('unitMixBody');
+    tbody.innerHTML = '';
+    typologies.forEach(typ => {
+        const row = tbody.insertRow();
+        const typRevenue = typ.units * typ.price;
+        row.innerHTML = `
+                                        <td>${typ.name}</td>
+                                        <td>${typ.units}</td>
+                                        <td>${typ.size} sqm</td>
+                                        <td>${typ.units * typ.size} sqm</td>
+                                        <td>${formatCurrency(typ.price)}</td>
+                                        <td>${formatCurrency(typRevenue)}</td>
+                                        <td>${formatPercent((typRevenue / grossRevenue) * 100)}</td>
+                                `;
+    });
+
+    document.getElementById('results').style.display = 'block';
+
+    return {
+        totalCost,
+        netRevenue,
+        grossProfit,
+        netProfit,
+        roce,
+        totalUnits,
+        totalGFA
+    };
+}
+
+function optimiseConfiguration() {
+    const siteArea = parseFloat(document.getElementById('siteArea').value) || 1000;
+    const maxCoverage = siteArea * 0.8; // Assume 80% max coverage
+
+    // Generate scenarios
+    const scenarios = [];
+
+    // Current configuration
+    const current = calculateFeasibility();
+    scenarios.push({
+        name: 'Current',
+        typologies: JSON.parse(JSON.stringify(typologies)),
+        ...current
+    });
+
+    // Maximum units scenario (smaller units)
+    const maxUnitsTypologies = [
+        { name: '1 Bedroom', units: Math.floor(maxCoverage / 50), size: 50, price: 385000 }
+    ];
+    typologies = maxUnitsTypologies;
+    const maxUnits = calculateFeasibility();
+    scenarios.push({
+        name: 'Max Units',
+        typologies: JSON.parse(JSON.stringify(maxUnitsTypologies)),
+        ...maxUnits
+    });
+
+    // Balanced scenario
+    const balancedTypologies = [
+        { name: '1 Bedroom', units: 2, size: 50, price: 385000 },
+        { name: '2 Bedroom', units: 4, size: 75, price: 485000 },
+        { name: '3 Bedroom', units: 2, size: 100, price: 615000 }
+    ];
+    typologies = balancedTypologies;
+    const balanced = calculateFeasibility();
+    scenarios.push({
+        name: 'Balanced Mix',
+        typologies: JSON.parse(JSON.stringify(balancedTypologies)),
+        ...balanced
+    });
+
+    // Premium scenario (larger units, higher prices)
+    const premiumTypologies = [
+        { name: '3 Bedroom Premium', units: 3, size: 120, price: 750000 },
+        { name: '4 Bedroom Premium', units: 2, size: 150, price: 950000 }
+    ];
+    typologies = premiumTypologies;
+    const premium = calculateFeasibility();
+    scenarios.push({
+        name: 'Premium',
+        typologies: JSON.parse(JSON.stringify(premiumTypologies)),
+        ...premium
+    });
+
+    // Find best ROCE
+    let bestScenario = scenarios[0];
+    scenarios.forEach(scenario => {
+        if (scenario.roce > bestScenario.roce) {
+            bestScenario = scenario;
+        }
+    });
+
+    // Display optimisation results
+    const optimDiv = document.getElementById('optimisationResults');
+    optimDiv.innerHTML = `
+                                <h3>Optimal Configuration: ${bestScenario.name}</h3>
+                                <p>This configuration achieves the highest ROCE of ${formatPercent(bestScenario.roce)}</p>
+                                <p>Net Profit: ${formatCurrency(bestScenario.netProfit)}</p>
+                                <p>Total Units: ${bestScenario.totalUnits}</p>
+                                <p>Total GFA: ${bestScenario.totalGFA} sqm</p>
+                        `;
+
+    // Update scenario comparison table
+    const tbody = document.getElementById('scenarioBody');
+    tbody.innerHTML = '';
+    scenarios.forEach(scenario => {
+        const row = tbody.insertRow();
+        row.innerHTML = `
+                                        <td>${scenario.name}</td>
+                                        <td>${scenario.totalUnits}</td>
+                                        <td>${scenario.totalGFA.toFixed(0)}</td>
+                                        <td>${formatCurrency(scenario.totalCost)}</td>
+                                        <td>${formatCurrency(scenario.netRevenue)}</td>
+                                        <td class="${scenario.netProfit > 0 ? 'profit' : 'loss'}">${formatCurrency(scenario.netProfit)}</td>
+                                        <td>${formatPercent(scenario.roce)}</td>
+                                `;
+        if (scenario === bestScenario) {
+            row.style.backgroundColor = '#fffef0';
+            row.style.fontWeight = 'bold';
+        }
+    });
+
+    // Restore original typologies
+    typologies = scenarios[0].typologies;
+    renderTypologies();
+
+    document.getElementById('optimisation').style.display = 'block';
+}
+
+function generateReport() {
+    // Calculate current feasibility
+    calculateFeasibility();
+
+    // Hide input controls and show print view
+    const noPrintElements = document.querySelectorAll('.no-print');
+    noPrintElements.forEach(el => el.style.display = 'none');
+
+    // Print
+    window.print();
+
+    // Restore view
+    noPrintElements.forEach(el => el.style.display = 'block');
+}
+
+function saveConfiguration() {
+    const config = {
+        projectName: document.getElementById('projectName').value,
+        siteArea: document.getElementById('siteArea').value,
+        startDate: document.getElementById('startDate').value,
+        duration: document.getElementById('duration').value,
+        landCost: document.getElementById('landCost').value,
+        civilCost: document.getElementById('civilCost').value,
+        constructionPerSqm: document.getElementById('constructionPerSqm').value,
+        consultantsCost: document.getElementById('consultantsCost').value,
+        councilCost: document.getElementById('councilCost').value,
+        contingencyPercent: document.getElementById('contingencyPercent').value,
+        marketingCost: document.getElementById('marketingCost').value,
+        financeRate: document.getElementById('financeRate').value,
+        typologies: typologies
+    };
+
+    const dataStr = JSON.stringify(config, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+    const exportFileDefaultName = `${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}${String(new Date().getDate()).padStart(2, '0')}_feasibility_config.json`;
+
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+}
+
+function loadDefaults() {
+    // Load defaults based on CSV data
+    document.getElementById('projectName').value = 'Rotorua';
+    document.getElementById('siteArea').value = '1000';
+    document.getElementById('startDate').value = '2026-07-05';
+    document.getElementById('duration').value = '12';
+    document.getElementById('landCost').value = '447826';
+    document.getElementById('civilCost').value = '80000';
+    document.getElementById('constructionPerSqm').value = '2300';
+    document.getElementById('consultantsCost').value = '100000';
+    document.getElementById('councilCost').value = '100000';
+    document.getElementById('contingencyPercent').value = '10';
+    document.getElementById('marketingCost').value = '20000';
+    document.getElementById('financeRate').value = '8.5';
+
+    // Set default typologies
+    typologies = [
+        { name: '2 Bedroom', units: 3, size: 75, price: 485000 },
+        { name: '3 Bedroom', units: 2, size: 100, price: 615000 }
+    ];
+    renderTypologies();
+}
+</script>
+</body>
+</html>
