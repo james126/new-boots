@@ -1,17 +1,45 @@
-import {DefaultTheme} from "react-native-paper";
+import {DefaultTheme, configureFonts, MD3LightTheme, PaperProvider} from "react-native-paper";
+import { Platform } from 'react-native';
+import {Font, MD3Type} from "react-native-paper/src/types";
+
+const fontConfig = {
+    headlineMedium: {
+        fontFamily: 'Work Sans Black',
+        fontWeight: '800' as Font['fontWeight'],
+        letterSpacing: 1.0,
+        lineHeight: 25,
+        fontSize: 20,
+    },
+    displaySmall: {
+        fontFamily: 'Bagel Fat One Regular',
+        fontWeight: '400' as Font['fontWeight'],
+        letterSpacing: 1.0,
+        lineHeight: 28,
+        fontSize: 17,
+    },
+    titleMedium: {
+        fontFamily: 'Boldonse Regular',
+        fontWeight: '800' as Font['fontWeight'],
+        letterSpacing: 0.5,
+        lineHeight: 25,
+        fontSize: 15,
+    }
+};
 
 export const theme = {
     ...DefaultTheme,
     colors: {
         ...DefaultTheme.colors,
-        primary: '#1976D2', // Material Blue 700
+        primary: '#1565c0', // Material Blue 800
         onPrimary: '#FFFFFF', // White text on primary
         primaryContainer: '#E3F2FD', // Light blue background for primary
         onPrimaryContainer: '#0D47A1',
-        secondary: '#43A047', // Material Green 600
+        secondary: '#2e7d32', // Material Green 800
         onSecondary: '#FFFFFF',
         secondaryContainer: '#E8F5E9', // Light green background for secondary
         onSecondaryContainer: '#1B5E20',
+        tertiary: '#0d47a1', // Material Blue 900
+        onTertiary: '#FFC107',
         background: '#F5F6FA', // Light grey background
         onBackground: '#222B45',
         surface: '#FFFFFF',
@@ -23,5 +51,21 @@ export const theme = {
         accent: '#00B8D4', // Cyan A400
         // Add more overrides as needed
     },
-    roundness: 8, // Slightly more rounded corners for a modern look
+    roundness: 2, // Slightly more rounded corners for a modern look
+    // Surface prop
+    elevation: {
+        level0: 'transparent',  // flat
+        level1: '#e0e0e0',
+        level2: '#c7c7c7',
+        level3: '#aeaeae',
+        level4: '#949494',
+        level5: '#7a7a7a',
+    },
+    fonts: configureFonts({config: fontConfig}),
 };
+
+
+
+
+
+

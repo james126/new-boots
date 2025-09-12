@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { ScrollView, Image, View } from 'react-native';
-import { Surface, Text } from 'react-native-paper';
+import { useTheme, Text } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ProjectInformation from './calculator/ProjectInformation';
 import DevelopmentCosts from './calculator/DevelopmentCosts';
@@ -9,6 +9,7 @@ import FeasibilityResults from './FeasibilityResults';
 
 const Calculator: React.FC = () => {
   const insets = useSafeAreaInsets();
+    const theme = useTheme();
 
   // Store latest values from children
   const projectInfoRef = useRef({
@@ -94,11 +95,9 @@ const Calculator: React.FC = () => {
           resizeMode="cover"
         />
         <Text
-          variant="headlineSmall"
+          variant="headlineMedium"
           style={{
-            color: '#1976D2',
-            fontWeight: 'bold',
-            letterSpacing: 1.2,
+            color: theme.colors.primary,
             textAlign: 'center',
             textShadowColor: 'rgba(0,0,0,0.10)',
             textShadowOffset: { width: 0, height: 2 },
@@ -107,8 +106,22 @@ const Calculator: React.FC = () => {
           accessibilityRole="header"
           accessibilityLabel="Property Development Feasibility Calculator"
         >
-          Property Development Feasibility Calculator
+          Property Development
         </Text>
+          <Text
+              variant="displaySmall"
+              style={{
+                  color: theme.colors.primary,
+                  textAlign: 'center',
+                  textShadowColor: 'rgba(0,0,0,0.10)',
+                  textShadowOffset: { width: 0, height: 2 },
+                  textShadowRadius: 4,
+              }}
+              accessibilityRole="header"
+              accessibilityLabel="Property Development Feasibility Calculator"
+          >
+              Feasibility Calculator
+          </Text>
       </View>
       {/*</Surface>*/}
       <ProjectInformation onChange={handleProjectInfoChange} />

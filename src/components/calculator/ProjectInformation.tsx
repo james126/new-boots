@@ -32,9 +32,9 @@ const ProjectInformation: React.FC<Props> = ({ onChange }) => {
   }, [projectName, siteArea, startDate, duration, onChange]);
 
   return (
-    <Card style={[styles.card, { backgroundColor: theme.colors.surface }]}>
+    <Card elevation={5} style={[styles.card, { backgroundColor: theme.colors.surface }]}>
       <Card.Title
-        title={<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Project Information</Text>}
+        title={<Text variant={'titleMedium'} style={{ color: theme.colors.tertiary}}>Project Information</Text>}
       />
       <Card.Content>
         <TextInput
