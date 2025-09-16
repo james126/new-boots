@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Text, Divider, useTheme } from 'react-native-paper';
+import ContentCard from '../../styles/ContentCard';
 
 interface Typology {
   name: string;
@@ -21,13 +22,11 @@ const UnitMixBreakdown: React.FC<Props> = ({ typologies, formatCurrency, formatP
   });
   const theme = useTheme();
   return (
-    <Card style={{ marginBottom: 12, backgroundColor: theme.colors.surface }}>
-      <Card.Title title={<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Unit Mix Breakdown</Text>} />
-      <Card.Content>
+    <ContentCard title="Unit Mix Breakdown" style={{ marginBottom: 12 }}>
         {typologies.map((typ, idx) => {
           const typRevenue = typ.units * typ.price;
           return (
-            <Card key={idx} style={{ marginBottom: 12, backgroundColor: theme.colors.surface, borderColor: theme.colors.primary, borderWidth: 1 }}>
+            <Card key={idx} style={{ marginBottom: 12, backgroundColor: 'rgba(255, 255, 255, 0.55)', borderColor: theme.colors.primary, borderWidth: 1 }}>
               <Card.Content>
                 <Text variant="titleMedium" style={{ marginBottom: 4, color: theme.colors.primary }}>{typ.name}</Text>
                 <Divider style={{ marginBottom: 8 }} />
@@ -41,8 +40,7 @@ const UnitMixBreakdown: React.FC<Props> = ({ typologies, formatCurrency, formatP
             </Card>
           );
         })}
-      </Card.Content>
-    </Card>
+    </ContentCard>
   );
 };
 

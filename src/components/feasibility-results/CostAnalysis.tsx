@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, Text, useTheme } from 'react-native-paper';
+import { Text, useTheme } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
+import ContentCard from '../../styles/ContentCard';
 
 interface Typology {
   name: string;
@@ -31,9 +32,7 @@ interface Props {
   formatCurrency: (n: number) => string;
 }
 
-const styles = StyleSheet.create({
-  card: { marginBottom: 12 },
-});
+const styles = StyleSheet.create({});
 
 const CostAnalysis: React.FC<Props> = ({ costs, projectInfo, typologies, formatCurrency }) => {
   const land = parseFloat(costs.landCost) || 0;
@@ -61,16 +60,13 @@ const CostAnalysis: React.FC<Props> = ({ costs, projectInfo, typologies, formatC
   const theme = useTheme();
 
   return (
-    <Card style={[styles.card, { backgroundColor: theme.colors.surface }]}>
-      <Card.Title title={<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Cost Analysis</Text>} />
-      <Card.Content>
-        <Text>Land Cost: {formatCurrency(land)}</Text>
-        <Text>Construction Cost: {formatCurrency(constructionCost)}</Text>
-        <Text>Other Costs: {formatCurrency(otherCosts)}</Text>
-        <Text>Finance Cost: {formatCurrency(financeCost)}</Text>
-        <Text style={{ color: theme.colors.accent, fontWeight: 'bold' }}>Total Development Cost: {formatCurrency(totalCost)}</Text>
-      </Card.Content>
-    </Card>
+    <ContentCard title="Cost Analysis" style={{ marginBottom: 12 }}>
+      <Text>Land Cost: {formatCurrency(land)}</Text>
+      <Text>Construction Cost: {formatCurrency(constructionCost)}</Text>
+      <Text>Other Costs: {formatCurrency(otherCosts)}</Text>
+      <Text>Finance Cost: {formatCurrency(financeCost)}</Text>
+      <Text style={{ color: theme.colors.accent, fontWeight: 'bold' }}>Total Development Cost: {formatCurrency(totalCost)}</Text>
+    </ContentCard>
   );
 };
 

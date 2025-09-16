@@ -1,15 +1,17 @@
 import React, { useRef } from 'react';
-import { ScrollView, Image, View } from 'react-native';
-import { useTheme, Text } from 'react-native-paper';
+import { ScrollView, ImageBackground, View } from 'react-native';
+import { useTheme } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import AppHeadingCard from '../styles/AppHeadingCard';
 import ProjectInformation from './calculator/ProjectInformation';
 import DevelopmentCosts from './calculator/DevelopmentCosts';
 import UnitTypologies from './calculator/UnitTypologies';
 import FeasibilityResults from './FeasibilityResults';
+import {styles} from '../styles/BackgroundImage';
 
 const Calculator: React.FC = () => {
   const insets = useSafeAreaInsets();
-    const theme = useTheme();
+  const theme = useTheme();
 
   // Store latest values from children
   const projectInfoRef = useRef({
@@ -56,84 +58,69 @@ const Calculator: React.FC = () => {
   };
 
   return (
-    <ScrollView
-      contentContainerStyle={{
-        paddingTop: insets.top,
-        paddingBottom: insets.bottom,
-        paddingLeft: insets.left,
-        paddingRight: insets.right,
-        backgroundColor: '#F5F6FA', // light grey background
-      }}
-      scrollIndicatorInsets={{ right: -6 }}
-      persistentScrollbar={true}
-    >
-      {/*<Surface style={{*/}
-      {/*  margin: 16,*/}
-      {/*  marginBottom: 0,*/}
-      {/*  padding: 0,*/}
-      {/*  borderRadius: 16,*/}
-      {/*  backgroundColor: '#fff',*/}
-      {/*  alignItems: 'center',*/}
-      {/*  elevation: 4,*/}
-      {/*  position: 'relative',*/}
-      {/*  overflow: 'hidden',*/}
-      {/*  minHeight: 120,*/}
-      {/*  justifyContent: 'center',*/}
-      {/*}}>*/}
-      <View>
-        <Image
-          source={require('../../assets/excavator.png')}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            opacity: 0.18,
-            zIndex: 0,
-          }}
-          resizeMode="cover"
+    <View style={{ flex: 1, position: 'relative' }}>
+      {/* Static Background Image (centered, contain) */}
+      <View
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 0,
+        }}
+        pointerEvents="none"
+      >
+        <ImageBackground
+          source={require('../../assets/blue-background-2.jpg')}
+          style={styles.backgroundImage}
+          resizeMode="stretch"
         />
-        <Text
-          variant="headlineMedium"
-          style={{
-            color: theme.colors.primary,
-            textAlign: 'center',
-            textShadowColor: 'rgba(0,0,0,0.10)',
-            textShadowOffset: { width: 0, height: 2 },
-            textShadowRadius: 4,
-          }}
-          accessibilityRole="header"
-          accessibilityLabel="Property Development Feasibility Calculator"
-        >
-          Property Development
-        </Text>
-          <Text
-              variant="displaySmall"
-              style={{
-                  color: theme.colors.primary,
-                  textAlign: 'center',
-                  textShadowColor: 'rgba(0,0,0,0.10)',
-                  textShadowOffset: { width: 0, height: 2 },
-                  textShadowRadius: 4,
-              }}
-              accessibilityRole="header"
-              accessibilityLabel="Property Development Feasibility Calculator"
-          >
-              Feasibility Calculator
-          </Text>
       </View>
-      {/*</Surface>*/}
-      <ProjectInformation onChange={handleProjectInfoChange} />
-      <DevelopmentCosts onChange={handleCostsChange} />
-      <UnitTypologies onChange={handleTypologiesChange} />
-      <FeasibilityResults
-        input={feasibilityInput}
-        formatCurrency={formatCurrency}
-        formatPercent={formatPercent}
+
+      {/* Dark Overlay */}
+      <View
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.05)',
+          zIndex: 1,
+        }}
       />
-      {/* Optimisation Section remains inline for now, not refactored */}
-    </ScrollView>
+
+      {/* Scrollable Content */}
+      <ScrollView
+        contentContainerStyle={{
+          paddingTop: insets.top,
+          paddingBottom: insets.bottom,
+          paddingLeft: insets.left,
+          paddingRight: insets.right,
+          backgroundColor: 'transparent',
+        }}
+        scrollIndicatorInsets={{ right: -6 }}
+        persistentScrollbar={true}
+        style={{ zIndex: 2 }}
+      >
+        <AppHeadingCard
+          title="Property Development"
+          subtitle="Feasibility Calculator"
+        />
+        <ProjectInformation onChange={handleProjectInfoChange} />
+        <DevelopmentCosts onChange={handleCostsChange} />
+        <UnitTypologies onChange={handleTypologiesChange} />
+        <FeasibilityResults
+          input={feasibilityInput}
+          formatCurrency={formatCurrency}
+          formatPercent={formatPercent}
+        />
+        {/* Optimisation Section remains inline for now, not refactored */}
+      </ScrollView>
+    </View>
   );
 };
 

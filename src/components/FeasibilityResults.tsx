@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Button, useTheme, Text } from 'react-native-paper';
+import { Button, useTheme, Text } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
+import ContentCard from '../styles/ContentCard';
 import DevelopmentSummary from './feasibility-results/DevelopmentSummary';
 import CostAnalysis from './feasibility-results/CostAnalysis';
 import RevenueAnalysis from './feasibility-results/RevenueAnalysis';
@@ -41,7 +42,6 @@ interface Props {
 }
 
 const styles = StyleSheet.create({
-  card: { marginVertical: 8 },
   button: { marginBottom: 16 },
 });
 
@@ -50,9 +50,7 @@ const FeasibilityResults: React.FC<Props> = ({ input, formatCurrency, formatPerc
   const theme = useTheme();
 
   return (
-    <Card style={[styles.card, { backgroundColor: theme.colors.surface }]}>
-      <Card.Title title={<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Feasibility Results</Text>} />
-      <Card.Content>
+    <ContentCard title="Feasibility Results">
         <Button mode="contained" onPress={() => setResultsVisible(true)} style={styles.button} buttonColor={theme.colors.primary} textColor="#fff">
           Calculate Feasibility
         </Button>
@@ -87,8 +85,7 @@ const FeasibilityResults: React.FC<Props> = ({ input, formatCurrency, formatPerc
             />
           </>
         )}
-      </Card.Content>
-    </Card>
+    </ContentCard>
   );
 };
 

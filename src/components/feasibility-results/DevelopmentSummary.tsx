@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, Text, useTheme } from 'react-native-paper';
+import { Text, useTheme } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
+import ContentCard from '../../styles/ContentCard';
 
 interface Typology {
   name: string;
@@ -19,9 +20,7 @@ interface Props {
   formatPercent: (n: number) => string;
 }
 
-const styles = StyleSheet.create({
-  card: { marginBottom: 12 },
-});
+const styles = StyleSheet.create({});
 
 const DevelopmentSummary: React.FC<Props> = ({ projectInfo, typologies, formatPercent }) => {
   let totalUnits = 0;
@@ -35,14 +34,11 @@ const DevelopmentSummary: React.FC<Props> = ({ projectInfo, typologies, formatPe
   const theme = useTheme();
 
   return (
-    <Card style={[styles.card, { backgroundColor: theme.colors.surface }]}>
-      <Card.Title title={<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Development Summary</Text>} />
-      <Card.Content>
-        <Text>Total Units: {totalUnits}</Text>
-        <Text>Total GFA (sqm): {totalGFA}</Text>
-        <Text style={{ color: theme.colors.accent, fontWeight: 'bold' }}>Site Coverage: {formatPercent(siteCoverage)}</Text>
-      </Card.Content>
-    </Card>
+    <ContentCard title="Development Summary" style={{ marginBottom: 12 }}>
+      <Text>Total Units: {totalUnits}</Text>
+      <Text>Total GFA (sqm): {totalGFA}</Text>
+      <Text style={{ color: theme.colors.accent, fontWeight: 'bold' }}>Site Coverage: {formatPercent(siteCoverage)}</Text>
+    </ContentCard>
   );
 };
 

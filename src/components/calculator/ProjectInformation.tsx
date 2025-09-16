@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, TextInput, useTheme, Text } from 'react-native-paper';
+import { TextInput, useTheme, Text } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
+import ContentCard from '../../styles/ContentCard';
 
 interface ProjectInfo {
   projectName: string;
@@ -14,8 +15,7 @@ interface Props {
 }
 
 const styles = StyleSheet.create({
-  card: { marginVertical: 8 },
-  input: { marginBottom: 8 },
+  input: { marginBottom: 8},
 });
 
 const ProjectInformation: React.FC<Props> = ({ onChange }) => {
@@ -32,42 +32,37 @@ const ProjectInformation: React.FC<Props> = ({ onChange }) => {
   }, [projectName, siteArea, startDate, duration, onChange]);
 
   return (
-    <Card elevation={5} style={[styles.card, { backgroundColor: theme.colors.surface }]}>
-      <Card.Title
-        title={<Text variant={'titleMedium'} style={{ color: theme.colors.tertiary}}>Project Information</Text>}
+    <ContentCard title="Project Information">
+      <TextInput
+        label="Project Name"
+        value={projectName}
+        onChangeText={setProjectName}
+        mode="outlined"
+        style={styles.input}
       />
-      <Card.Content>
-        <TextInput
-          label="Project Name"
-          value={projectName}
-          onChangeText={setProjectName}
-          mode="outlined"
-          style={styles.input}
-        />
-        <TextInput
-          label="Site Area (sqm)"
-          value={siteArea}
-          onChangeText={setSiteArea}
-          keyboardType="numeric"
-          mode="outlined"
-          style={styles.input}
-        />
-        <TextInput
-          label="Project Start Date"
-          value={startDate}
-          onChangeText={setStartDate}
-          mode="outlined"
-          style={styles.input}
-        />
-        <TextInput
-          label="Duration (months)"
-          value={duration}
-          onChangeText={setDuration}
-          keyboardType="numeric"
-          mode="outlined"
-        />
-      </Card.Content>
-    </Card>
+      <TextInput
+        label="Site Area (sqm)"
+        value={siteArea}
+        onChangeText={setSiteArea}
+        keyboardType="numeric"
+        mode="outlined"
+        style={styles.input}
+      />
+      <TextInput
+        label="Project Start Date"
+        value={startDate}
+        onChangeText={setStartDate}
+        mode="outlined"
+        style={styles.input}
+      />
+      <TextInput
+        label="Duration (months)"
+        value={duration}
+        onChangeText={setDuration}
+        keyboardType="numeric"
+        mode="outlined"
+      />
+    </ContentCard>
   );
 };
 

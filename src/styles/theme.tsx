@@ -1,14 +1,13 @@
-import {DefaultTheme, configureFonts, MD3LightTheme, PaperProvider} from "react-native-paper";
-import { Platform } from 'react-native';
-import {Font, MD3Type} from "react-native-paper/src/types";
+import {DefaultTheme, configureFonts} from "react-native-paper";
+import {Font} from "react-native-paper/src/types";
 
 const fontConfig = {
     headlineMedium: {
-        fontFamily: 'Work Sans Black',
+        fontFamily: 'AnonymousPro-Bod',
         fontWeight: '800' as Font['fontWeight'],
-        letterSpacing: 1.0,
-        lineHeight: 25,
-        fontSize: 20,
+        letterSpacing: 0.5,
+        lineHeight: 27,
+        fontSize: 22,
     },
     displaySmall: {
         fontFamily: 'Bagel Fat One Regular',
@@ -18,11 +17,11 @@ const fontConfig = {
         fontSize: 17,
     },
     titleMedium: {
-        fontFamily: 'Boldonse Regular',
-        fontWeight: '800' as Font['fontWeight'],
-        letterSpacing: 0.5,
-        lineHeight: 25,
-        fontSize: 15,
+        fontFamily: 'ZenDots-Regular',
+        fontWeight: '200' as Font['fontWeight'],
+        letterSpacing: 0.7,
+        lineHeight: 27,
+        fontSize: 22,
     }
 };
 
@@ -63,9 +62,3 @@ export const theme = {
     },
     fonts: configureFonts({config: fontConfig}),
 };
-
-
-
-
-
-

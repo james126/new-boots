@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Text, useTheme } from 'react-native-paper';
+import { Text, useTheme } from 'react-native-paper';
+import ContentCard from '../../styles/ContentCard';
 
 interface Typology {
   name: string;
@@ -73,17 +74,14 @@ const ProfitabilityMetrics: React.FC<Props> = ({ typologies, costs, projectInfo,
   const theme = useTheme();
 
   return (
-    <Card style={{ marginBottom: 12, backgroundColor: theme.colors.surface }}>
-      <Card.Title title={<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Profitability Metrics</Text>} />
-      <Card.Content>
-        <Text>Net Revenue: {formatCurrency(netRevenue)}</Text>
-        <Text>Total Cost: {formatCurrency(totalCost)}</Text>
-        <Text style={{ color: theme.colors.accent, fontWeight: 'bold' }}>Profit: {formatCurrency(profit)}</Text>
-        <Text style={{ color: theme.colors.accent, fontWeight: 'bold' }}>Margin: {formatPercent(margin)}</Text>
-        <Text>Cost per Unit: {formatCurrency(costPerUnit)}</Text>
-        <Text>Revenue per Unit: {formatCurrency(revenuePerUnit)}</Text>
-      </Card.Content>
-    </Card>
+    <ContentCard title="Profitability Metrics" style={{ marginBottom: 12 }}>
+      <Text>Net Revenue: {formatCurrency(netRevenue)}</Text>
+      <Text>Total Cost: {formatCurrency(totalCost)}</Text>
+      <Text style={{ color: theme.colors.accent, fontWeight: 'bold' }}>Profit: {formatCurrency(profit)}</Text>
+      <Text style={{ color: theme.colors.accent, fontWeight: 'bold' }}>Margin: {formatPercent(margin)}</Text>
+      <Text>Cost per Unit: {formatCurrency(costPerUnit)}</Text>
+      <Text>Revenue per Unit: {formatCurrency(revenuePerUnit)}</Text>
+    </ContentCard>
   );
 };
 

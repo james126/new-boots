@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Text, TextInput, Button, IconButton, useTheme } from 'react-native-paper';
+import ContentCard from '../../styles/ContentCard';
 
 interface Typology {
   name: string;
@@ -46,11 +47,7 @@ const UnitTypologies: React.FC<Props> = ({ onChange }) => {
   const inputStyle = { marginBottom: 8 };
 
   return (
-    <Card style={{ marginVertical: 8, backgroundColor: theme.colors.surface }}>
-      <Card.Title
-        title={<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Unit Typologies</Text>}
-      />
-      <Card.Content style={{ flexDirection: 'column' }}>
+    <ContentCard title="Unit Typologies" contentStyle={{ flexDirection: 'column' }}>
         <Text variant="bodyMedium" style={{ marginBottom: 8 }}>
           Configure different unit types to optimise your development mix
         </Text>
@@ -58,7 +55,7 @@ const UnitTypologies: React.FC<Props> = ({ onChange }) => {
           Add Typology
         </Button>
         {typologies.map((typ, idx) => (
-          <Card key={typ.name + '-' + idx} style={{ marginBottom: 12, backgroundColor: theme.colors.surface, borderColor: theme.colors.primary, borderWidth: 1 }}>
+          <Card key={typ.name + '-' + idx} style={{ marginBottom: 12, backgroundColor: 'rgba(255, 255, 255, 0.55)', borderColor: theme.colors.primary, borderWidth: 1 }}>
             <Card.Content style={{ flexDirection: 'column' }}>
               <TextInput
                 label="Type Name"
@@ -104,8 +101,7 @@ const UnitTypologies: React.FC<Props> = ({ onChange }) => {
             </Card.Content>
           </Card>
         ))}
-      </Card.Content>
-    </Card>
+    </ContentCard>
   );
 };
 

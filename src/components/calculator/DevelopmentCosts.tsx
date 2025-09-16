@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, TextInput, useTheme, Text } from 'react-native-paper';
+import { TextInput, useTheme, Text } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
+import ContentCard from '../../styles/ContentCard';
 
 interface Costs {
   landCost: string;
@@ -18,7 +19,6 @@ interface Props {
 }
 
 const styles = StyleSheet.create({
-  card: { marginVertical: 8 },
   input: { marginBottom: 8 },
 });
 
@@ -49,11 +49,7 @@ const DevelopmentCosts: React.FC<Props> = ({ onChange }) => {
   }, [landCost, civilCost, constructionPerSqm, consultantsCost, councilCost, contingencyPercent, marketingCost, financeRate, onChange]);
 
   return (
-    <Card style={[styles.card, { backgroundColor: theme.colors.surface }]}>
-      <Card.Title
-        title={<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Development Costs</Text>}
-      />
-      <Card.Content>
+    <ContentCard title="Development Costs">
         <TextInput
           label="Land Cost (NZD)"
           value={landCost}
@@ -118,8 +114,7 @@ const DevelopmentCosts: React.FC<Props> = ({ onChange }) => {
           mode="outlined"
           style={styles.input}
         />
-      </Card.Content>
-    </Card>
+    </ContentCard>
   );
 };
 

@@ -2,6 +2,14 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/AnonymousPro-Bold.ttf",
+      "sha1": "bfc8d198336c84f11f43c33671de9e23ddf3d058"
+    },
+    {
+      "path": "assets/fonts/AnonymousPro-Regular.ttf",
+      "sha1": "e5a1581199fe0058ba03e322b9a4823e199dd2b6"
+    },
+    {
       "path": "assets/fonts/Bagel Fat One Regular.ttf",
       "sha1": "735c5421c0636f79921ca6e293f6298a75465795"
     },
@@ -10,16 +18,16 @@
       "sha1": "4cbe9b11f0db000b499ee91b154564c36495fcb8"
     },
     {
-      "path": "assets/fonts/Noto Sans Variable Font wdth wght.ttf",
-      "sha1": "74b81677712cf4cae2f58c96229889f607de1dd4"
-    },
-    {
-      "path": "assets/fonts/Work Sans Black.ttf",
-      "sha1": "7ca3ae4f1c309b895f7d80136fbd6d69da34bf94"
+      "path": "assets/fonts/RussoOne-Regular.ttf",
+      "sha1": "4a12533ad9ee3d6c83da4ac659d78ef9fb702ab4"
     },
     {
       "path": "assets/fonts/Work Sans Bold.ttf",
       "sha1": "d88958723cac435cb3a0c41d78a13c2d61c3c3b4"
+    },
+    {
+      "path": "assets/fonts/ZenDots-Regular.ttf",
+      "sha1": "ac63258fa57f366da046b2cc18956cb4ff0104ee"
     }
   ]
 }
