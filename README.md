@@ -33,4 +33,4 @@ To link assets: <br>
 To open developer tools: <br>
 `adb shell input keyevent 82`
 
-<img src="https:github.com/james126/new-boots/dev1/assets/screenshot.png" />
+<img src="https://github.com/james126/new-boots/blob/dev1/assets/screenshot.png" width=25% />
