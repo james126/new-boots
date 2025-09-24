@@ -1,53 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Text, TextInput, Button, IconButton, useTheme } from 'react-native-paper';
-import ContentCard from '../../styles/ContentCard';
+import { UnitTypology, defaultUnitTypologies } from '../../types/UnitTypologies';
+import {calculatorCardStyle} from '../../styles/calculatorCardStyle'
 
-interface Typology {
-  name: string;
-  units: number;
-  size: number;
-  price: number;
-}
-
-interface Props {
-  onChange?: (typologies: Typology[]) => void;
-}
-
-const defaultTypologies: Typology[] = [
-  { name: '2 Bedroom', units: 3, size: 75, price: 485000 },
-  { name: '3 Bedroom', units: 2, size: 100, price: 615000 },
-];
-
-const UnitTypologies: React.FC<Props> = ({ onChange }) => {
-  const [typologies, setTypologies] = useState<Typology[]>([...defaultTypologies]);
+const UnitTypologies
+    = () => {
+  const [typologies, setTypologies] = useState<UnitTypology[]>(defaultUnitTypologies);
   const theme = useTheme();
 
-  useEffect(() => {
-    if (onChange) onChange(typologies);
-  }, [typologies, onChange]);
-
   const addTypology = () => {
-    setTypologies([...typologies, { name: 'New Type', units: 1, size: 85, price: 500000 }]);
-  };
-  const removeTypology = (index: number) => {
-    if (typologies.length > 1) {
-      setTypologies(typologies.filter((_, i) => i !== index));
+    let usedIds = new Set(typologies.map(t => t.id))
+    let candidate = 0;
+    while (usedIds.has(candidate)){
+      candidate++;
     }
-  };
-  const updateTypology = (index: number, field: keyof Typology, value: string) => {
-    const updated = [...typologies];
-    if (field === 'units' || field === 'size' || field === 'price') {
-      updated[index][field] = parseFloat(value) || 0;
-    } else {
-      updated[index][field] = value;
-    }
-    setTypologies(updated);
+
+    setTypologies([...typologies, {id: candidate, name: 'New Type', units: 0, size: 0, price: 0 }]);
   };
 
-  const inputStyle = { marginBottom: 8 };
+  const removeTypology = (id: number) => {
+    if (typologies.length > 1) {
+      setTypologies(typologies.filter((typ, index) => typ.id !== id));
+    }
+  };
+
+  const updateTypology = (id: number, field: keyof UnitTypology, value: string) => {
+    const updated = [...typologies];
+    const typ = updated.find((value, index) => value.id === id)
+    if (typ) {
+      if (field === 'units' || field === 'size' || field === 'price') {
+        typ[field] = Number(value);
+      } else if (field === 'name') {
+        typ[field] = value
+      }
+      setTypologies(updated);
+    }
+  };
 
   return (
-    <ContentCard title="Unit Typologies" contentStyle={{ flexDirection: 'column' }}>
+    <Card style={calculatorCardStyle.card}>
+      <Card.Title title="Unit Typologies" titleStyle={calculatorCardStyle.title}/>
+      <Card.Content>
         <Text variant="bodyMedium" style={{ marginBottom: 8 }}>
           Configure different unit types to optimise your development mix
         </Text>
@@ -55,38 +48,38 @@ const UnitTypologies: React.FC<Props> = ({ onChange }) => {
           Add Typology
         </Button>
         {typologies.map((typ, idx) => (
-          <Card key={typ.name + '-' + idx} style={{ marginBottom: 12, backgroundColor: 'rgba(255, 255, 255, 0.55)', borderColor: theme.colors.primary, borderWidth: 1 }}>
+          <Card key={typ.id} style={{ marginBottom: 12, backgroundColor: 'rgba(255, 255, 255, 0.55)', borderColor: theme.colors.primary, borderWidth: 1 }}>
             <Card.Content style={{ flexDirection: 'column' }}>
               <TextInput
                 label="Type Name"
                 value={typ.name}
-                onChangeText={v => updateTypology(idx, 'name', v)}
+                onChangeText={v => updateTypology(typ.id, 'name', v)}
                 mode="outlined"
-                style={inputStyle}
+                style={calculatorCardStyle.input}
               />
               <TextInput
                 label="Units"
                 value={typ.units.toString()}
-                onChangeText={v => updateTypology(idx, 'units', v)}
+                onChangeText={v => updateTypology(typ.id, 'units', v)}
                 keyboardType="numeric"
                 mode="outlined"
-                style={inputStyle}
+                style={calculatorCardStyle.input}
               />
               <TextInput
                 label="Size (sqm)"
                 value={typ.size.toString()}
-                onChangeText={v => updateTypology(idx, 'size', v)}
+                onChangeText={v => updateTypology(typ.id, 'size', v)}
                 keyboardType="numeric"
                 mode="outlined"
-                style={inputStyle}
+                style={calculatorCardStyle.input}
               />
               <TextInput
                 label="Sale Price (NZD)"
                 value={typ.price.toString()}
-                onChangeText={v => updateTypology(idx, 'price', v)}
+                onChangeText={v => updateTypology(typ.id, 'price', v)}
                 keyboardType="numeric"
                 mode="outlined"
-                style={inputStyle}
+                style={calculatorCardStyle.input}
               />
               <IconButton
                 icon="delete"
@@ -96,12 +89,13 @@ const UnitTypologies: React.FC<Props> = ({ onChange }) => {
                 disabled={typologies.length === 1}
                 style={{ marginTop: 4, alignSelf: 'flex-end' }}
                 accessibilityLabel="Remove Typology"
-                iconColor={theme.colors.accent || theme.colors.secondary}
+                iconColor={theme.colors.secondary}
               />
             </Card.Content>
           </Card>
         ))}
-    </ContentCard>
+      </Card.Content>
+    </Card>
   );
 };
 

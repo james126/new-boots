@@ -1,69 +1,51 @@
-import React, { useState, useEffect } from 'react';
-import { TextInput, useTheme, Text } from 'react-native-paper';
-import { StyleSheet } from 'react-native';
-import ContentCard from '../../styles/ContentCard';
+import React, {useState} from 'react';
+import {Card, TextInput} from 'react-native-paper';
+import {ProjectInfo, defaultProjectInfo} from '../../types/ProjectInfo';
+import {calculatorCardStyle} from '../../styles/calculatorCardStyle'
 
-interface ProjectInfo {
-  projectName: string;
-  siteArea: string;
-  startDate: string;
-  duration: string;
-}
+const ProjectInformation = () => {
+  const [info, setInfo] = useState<ProjectInfo>(defaultProjectInfo);
 
-interface Props {
-  onChange?: (info: ProjectInfo) => void;
-}
-
-const styles = StyleSheet.create({
-  input: { marginBottom: 8},
-});
-
-const ProjectInformation: React.FC<Props> = ({ onChange }) => {
-  const [projectName, setProjectName] = useState('Rotorua');
-  const [siteArea, setSiteArea] = useState('1000');
-  const [startDate, setStartDate] = useState('2026-07-05');
-  const [duration, setDuration] = useState('12');
-  const theme = useTheme();
-
-  useEffect(() => {
-    if (onChange) {
-      onChange({ projectName, siteArea, startDate, duration });
-    }
-  }, [projectName, siteArea, startDate, duration, onChange]);
+  const update = (info: ProjectInfo) => {
+      setInfo(info)
+  }
 
   return (
-    <ContentCard title="Project Information">
-      <TextInput
-        label="Project Name"
-        value={projectName}
-        onChangeText={setProjectName}
-        mode="outlined"
-        style={styles.input}
-      />
-      <TextInput
-        label="Site Area (sqm)"
-        value={siteArea}
-        onChangeText={setSiteArea}
-        keyboardType="numeric"
-        mode="outlined"
-        style={styles.input}
-      />
-      <TextInput
-        label="Project Start Date"
-        value={startDate}
-        onChangeText={setStartDate}
-        mode="outlined"
-        style={styles.input}
-      />
-      <TextInput
-        label="Duration (months)"
-        value={duration}
-        onChangeText={setDuration}
-        keyboardType="numeric"
-        mode="outlined"
-      />
-    </ContentCard>
-  );
+      <Card style={calculatorCardStyle.card}>
+      <Card.Title title="Project Information" titleStyle={calculatorCardStyle.title}/>
+      <Card.Content>
+        <TextInput
+          label="Project Name"
+          value={info.projectName || ''}
+          onChangeText={v => update({...info, projectName: v})}
+          mode="outlined"
+          style={calculatorCardStyle.input}
+        />
+        <TextInput
+          label="Site Area (sqm)"
+          value={info.siteArea?.toString() || ''}
+          onChangeText={v => update({...info, siteArea: v === '' ? null : parseFloat(v)})}
+          keyboardType="numeric"
+          mode="outlined"
+          style={calculatorCardStyle.input}
+        />
+        <TextInput
+          label="Project Start Date"
+          value={info.startDate?.toString() || ''}
+          onChangeText={v => update({...info, startDate: v === '' ? null : parseFloat(v)})}
+          mode="outlined"
+          style={calculatorCardStyle.input}
+        />
+        <TextInput
+          label="Duration (months)"
+          value={info.duration?.toString() || ''}
+          onChangeText={v => update({...info, duration: v === '' ? null : parseFloat(v)})}
+          keyboardType="numeric"
+          mode="outlined"
+          style={calculatorCardStyle.input}
+        />
+      </Card.Content>
+    </Card>);
 };
 
 export default ProjectInformation;
