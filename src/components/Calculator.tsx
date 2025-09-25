@@ -3,12 +3,12 @@ import { useState } from "react";
 import { ScrollView, ImageBackground, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import AppHeadingCard from './AppHeadingCard';
+import Heading from './Heading';
 import ProjectInformation from './calculator/ProjectInformation';
 import DevelopmentCosts from './calculator/DevelopmentCosts';
 import UnitTypologies from './calculator/UnitTypologies';
 //import Results from './Results';
-import {styles} from '../styles/BackgroundImage';
+import {backgroundStyle} from '../styles/backgroundStyle';
 
 const Calculator: React.FC = () => {
   const [size, setSize] = useState({ width: 0, height: 0, loading: true });
@@ -29,38 +29,13 @@ const Calculator: React.FC = () => {
   return (
     <View style={{ flex: 1, position: 'relative' }}>
       {/* Static Background Image (centered, contain) */}
-      <View
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 0,
-        }}
-        pointerEvents="none"
-      >
+      <View style={backgroundStyle.view}>
         <ImageBackground
-          source={require('../../assets/blue-background-2.jpg')}
-          style={styles.backgroundImage}
+          source={require('../../assets/abstract-background-triangles-blue-purple-color.jpg')}
+          style={backgroundStyle.backgroundImage}
           resizeMode="stretch"
         />
       </View>
-
-      {/* Dark Overlay */}
-      <View
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.05)',
-          zIndex: 1,
-        }}
-      />
 
       {/* Scrollable Content */}
       <ScrollView
@@ -69,19 +44,14 @@ const Calculator: React.FC = () => {
           paddingBottom: insets.bottom,
           paddingLeft: insets.left,
           paddingRight: insets.right,
-          backgroundColor: 'transparent',
+          // backgroundColor: 'transparent',
         }}
         scrollIndicatorInsets={{ right: -6 }}
         persistentScrollbar={true}
         style={{ zIndex: 2 }}
       >
-          {/*<Image source={require('../../assets/feasibility-calculator.png')}*/}
-          {/*       style={{width: dimensions.width, height: 'auto'}}/>*/}
 
-        <AppHeadingCard
-          title="Property Development"
-          subtitle="Feasibility Calculator"
-        />
+        <Heading title="Property Development"/>
         <ProjectInformation />
         <DevelopmentCosts />
         <UnitTypologies />

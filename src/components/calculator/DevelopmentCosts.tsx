@@ -19,7 +19,6 @@ const DevelopmentCosts = () => {
           value={costs.landCost.toString()}
           onChangeText={v => setCosts({ ...costs, landCost: parseFloat(v) || 0 })}
           keyboardType="numeric"
-          mode="outlined"
           style={calculatorCardStyle.input}
         />
         <TextInput
@@ -27,7 +26,6 @@ const DevelopmentCosts = () => {
           value={costs.civilCost.toString()}
           onChangeText={v => setCosts({ ...costs, civilCost: parseFloat(v) || 0 })}
           keyboardType="numeric"
-          mode="outlined"
           style={calculatorCardStyle.input}
         />
         <TextInput
@@ -35,7 +33,6 @@ const DevelopmentCosts = () => {
           value={costs.constructionPerSqm.toString()}
           onChangeText={v => setCosts({ ...costs, constructionPerSqm: parseFloat(v) || 0 })}
           keyboardType="numeric"
-          mode="outlined"
           style={calculatorCardStyle.input}
         />
         <TextInput
@@ -43,7 +40,6 @@ const DevelopmentCosts = () => {
           value={costs.consultantsCost.toString()}
           onChangeText={v => setCosts({ ...costs, consultantsCost: parseFloat(v) || 0 })}
           keyboardType="numeric"
-          mode="outlined"
           style={calculatorCardStyle.input}
         />
         <TextInput
@@ -51,7 +47,6 @@ const DevelopmentCosts = () => {
           value={costs.councilCost.toString()}
           onChangeText={v => setCosts({ ...costs, councilCost: parseFloat(v) || 0 })}
           keyboardType="numeric"
-          mode="outlined"
           style={calculatorCardStyle.input}
         />
         <TextInput
@@ -59,7 +54,6 @@ const DevelopmentCosts = () => {
           value={costs.contingencyPercent.toString()}
           onChangeText={v => setCosts({ ...costs, contingencyPercent: parseFloat(v) || 0 })}
           keyboardType="numeric"
-          mode="outlined"
           style={calculatorCardStyle.input}
         />
         <TextInput
@@ -67,7 +61,6 @@ const DevelopmentCosts = () => {
           value={costs.marketingCost.toString()}
           onChangeText={v => setCosts({ ...costs, marketingCost: parseFloat(v) || 0 })}
           keyboardType="numeric"
-          mode="outlined"
           style={calculatorCardStyle.input}
         />
         <TextInput
@@ -75,7 +68,6 @@ const DevelopmentCosts = () => {
           value={costs.financeRate.toString()}
           onChangeText={v => setCosts({ ...costs, financeRate: parseFloat(v) || 0 })}
           keyboardType="numeric"
-          mode="outlined"
           style={calculatorCardStyle.input}
         />
       </Card.Content>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Text, TextInput, Button, IconButton, useTheme } from 'react-native-paper';
 import { UnitTypology, defaultUnitTypologies } from '../../types/UnitTypologies';
 import {calculatorCardStyle} from '../../styles/calculatorCardStyle'
+import {unitTypologiesStyle} from '../../styles/unitTypologiesStyle'
 
 const UnitTypologies
     = () => {
@@ -41,20 +42,19 @@ const UnitTypologies
     <Card style={calculatorCardStyle.card}>
       <Card.Title title="Unit Typologies" titleStyle={calculatorCardStyle.title}/>
       <Card.Content>
-        <Text variant="bodyMedium" style={{ marginBottom: 8 }}>
+        <Text variant="bodyMedium" style={{ marginBottom: 8}}>
           Configure different unit types to optimise your development mix
         </Text>
         <Button mode="contained" onPress={addTypology} style={{ marginBottom: 12 }} icon="plus" buttonColor={theme.colors.primary} textColor="#fff">
           Add Typology
         </Button>
         {typologies.map((typ, idx) => (
-          <Card key={typ.id} style={{ marginBottom: 12, backgroundColor: 'rgba(255, 255, 255, 0.55)', borderColor: theme.colors.primary, borderWidth: 1 }}>
+          <Card key={typ.id} style={ unitTypologiesStyle.card }>
             <Card.Content style={{ flexDirection: 'column' }}>
               <TextInput
                 label="Type Name"
                 value={typ.name}
                 onChangeText={v => updateTypology(typ.id, 'name', v)}
-                mode="outlined"
                 style={calculatorCardStyle.input}
               />
               <TextInput
@@ -62,7 +62,6 @@ const UnitTypologies
                 value={typ.units.toString()}
                 onChangeText={v => updateTypology(typ.id, 'units', v)}
                 keyboardType="numeric"
-                mode="outlined"
                 style={calculatorCardStyle.input}
               />
               <TextInput
@@ -70,7 +69,6 @@ const UnitTypologies
                 value={typ.size.toString()}
                 onChangeText={v => updateTypology(typ.id, 'size', v)}
                 keyboardType="numeric"
-                mode="outlined"
                 style={calculatorCardStyle.input}
               />
               <TextInput
@@ -78,7 +76,6 @@ const UnitTypologies
                 value={typ.price.toString()}
                 onChangeText={v => updateTypology(typ.id, 'price', v)}
                 keyboardType="numeric"
-                mode="outlined"
                 style={calculatorCardStyle.input}
               />
               <IconButton
