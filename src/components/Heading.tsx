@@ -1,26 +1,44 @@
-import React, {useState } from 'react';
-import { View} from 'react-native';
-import { Text } from 'react-native-paper';
-import {HeadingImage} from "./HeadingImage";
+import React, {useState, useEffect } from 'react';
+import { Image, View} from 'react-native';
+import { Text, Card, Button } from 'react-native-paper';
 import {headingStyle} from "../styles/heading"
 
-interface HeadingProps {
-  title: string
-}
+const Heading = () => {
+   const [ratio, setRatio] = useState(1);
 
-const Heading: React.FC<HeadingProps> = ({ title}) => {
-  const [viewWidth, setViewWidth] = useState<number>(0);
+  useEffect(() => {
+    const img = Image.resolveAssetSource(require('../../assets/image/underconstruction.jpg'));
+    setRatio(img.width / img.height);
+  }, []);
 
   return (
-        <View style={headingStyle.view} onLayout={(event) => {
-            const { width } = event.nativeEvent.layout;
-            setViewWidth(width); }}>
-          <Text variant="titleMedium" style={headingStyle.text}>
-            {title}
+        <View style={headingStyle.view} >
+          <Text variant="titleMedium" style={headingStyle.heading}>
+            Property Development
           </Text>
-        <HeadingImage parentWidth={viewWidth}></HeadingImage>
+            <Text variant="titleMedium" style={headingStyle.title}>
+            Feasibility Calculator
+            </Text>
+            
+            <View style={{display: 'flex', backgroundColor: 'blue'}}>
+            <Card>
+
+              <View style={{ width: '100%', aspectRatio: ratio }}>
+              <Card.Cover source={require('../../assets/image/underconstruction.jpg')} resizeMode={'contain'} style={{width: '100%', height: '100%'}}/>
+              </View>  
+                <Card.Content>
+                    <Text variant="titleLarge">Subdivision Feasibility Calculator for Buyers, Developers and Investors</Text>
+                </Card.Content>
+                <Card.Actions>
+                    <Button>Let's go!</Button>
+                </Card.Actions>
+            </Card>
+            </View>
+            
         </View>
   );
 };
 
 export default Heading;
+
+

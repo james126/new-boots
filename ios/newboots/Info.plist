@@ -49,13 +49,34 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Bagel Fat One Regular.ttf</string>
-		<string>Boldonse Regular.ttf</string>
-		<string>Work Sans Bold.ttf</string>
-		<string>RussoOne-Regular.ttf</string>
-		<string>ZenDots-Regular.ttf</string>
-		<string>AnonymousPro-Bold.ttf</string>
-		<string>AnonymousPro-Regular.ttf</string>
+		<string>Blinker-Black.ttf</string>
+		<string>Blinker-ExtraBold.ttf</string>
+		<string>Blinker-ExtraLight.ttf</string>
+		<string>Blinker-Light.ttf</string>
+		<string>Blinker-Regular.ttf</string>
+		<string>Blinker-SemiBold.ttf</string>
+		<string>Blinker-Thin.ttf</string>
+		<string>Montserrat-Italic-VariableFont_wght.ttf</string>
+		<string>Montserrat-VariableFont_wght.ttf</string>
+		<string>Montserrat-Black.ttf</string>
+		<string>Montserrat-BlackItalic.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-BoldItalic.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Montserrat-ExtraBoldItalic.ttf</string>
+		<string>Montserrat-ExtraLight.ttf</string>
+		<string>Montserrat-ExtraLightItalic.ttf</string>
+		<string>Montserrat-Italic.ttf</string>
+		<string>Montserrat-Light.ttf</string>
+		<string>Montserrat-LightItalic.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-MediumItalic.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat-SemiBold.ttf</string>
+		<string>Montserrat-SemiBoldItalic.ttf</string>
+		<string>Montserrat-Thin.ttf</string>
+		<string>Montserrat-ThinItalic.ttf</string>
+		<string>Blinker-Bold.ttf</string>
 	</array>
 </dict>
 </plist>

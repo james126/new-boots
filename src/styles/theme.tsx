@@ -16,12 +16,20 @@ const fontConfig = {
         lineHeight: 28,
         fontSize: 17,
     },
-    titleMedium: {
+    titleLarge: {
         fontFamily: 'ZenDots-Regular',
         fontWeight: '600' as Font['fontWeight'],
         letterSpacing: 0.4,
         lineHeight: 22,
         fontSize: 20,
+    }
+    ,
+    titleMedium: {
+        fontFamily: 'Montserrat-ExtraBold',
+        // fontWeight: '600' as Font['fontWeight'],
+        // letterSpacing: 0.4,
+        // lineHeight: 22,
+        // fontSize: 20,
     }
 };
 
@@ -29,19 +37,19 @@ export const theme = {
     ...MD3LightTheme,
     colors: {
         // Primary role
-        primary: '#1e88e5',          // blue[600]
+        primary: '#24473B',          // confirmed
         onPrimary: '#ffffff',
         primaryContainer: '#bbdefb', // blue[100]
         onPrimaryContainer: '#0d47a1', // blue[900]
 
         // Secondary role
-        secondary: '#009688',          // teal[500]
+        secondary: '#577B5E',          // confirmed
         onSecondary: '#ffffff',
         secondaryContainer: '#b2dfdb', // teal[100]
         onSecondaryContainer: '#004d40', // teal[900]
 
         // Tertiary role
-        tertiary: '#00bcd4',           // cyan[500]
+        tertiary: '#45563C',           // cyan[500]
         onTertiary: '#ffffff',
         tertiaryContainer: '#b2ebf2',  // cyan[100]
         onTertiaryContainer: '#006064', // cyan[900]
