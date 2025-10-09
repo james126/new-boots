@@ -60,7 +60,6 @@
 		<string>Montserrat-VariableFont_wght.ttf</string>
 		<string>Montserrat-Black.ttf</string>
 		<string>Montserrat-BlackItalic.ttf</string>
-		<string>Montserrat-Bold.ttf</string>
 		<string>Montserrat-BoldItalic.ttf</string>
 		<string>Montserrat-ExtraBold.ttf</string>
 		<string>Montserrat-ExtraBoldItalic.ttf</string>
@@ -77,6 +76,7 @@
 		<string>Montserrat-Thin.ttf</string>
 		<string>Montserrat-ThinItalic.ttf</string>
 		<string>Blinker-Bold.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
 	</array>
 </dict>
 </plist>

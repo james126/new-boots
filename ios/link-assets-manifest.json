@@ -58,10 +58,6 @@
       "sha1": "3f86120ed3d28bb9aac0fed7a0290a0cfbeff531"
     },
     {
-      "path": "assets/fonts/Montserrat/static/Montserrat-Bold.ttf",
-      "sha1": "be7c1438070ab637e11716915e4e50903726dcc8"
-    },
-    {
       "path": "assets/fonts/Montserrat/static/Montserrat-BoldItalic.ttf",
       "sha1": "cd3789ae55cc702776afdd2fd1a81ae16c69fbf4"
     },
@@ -120,6 +116,38 @@
     {
       "path": "assets/fonts/Montserrat/static/Montserrat-ThinItalic.ttf",
       "sha1": "8d95f4a0cf9f73f72f6b436817a8d434f7ae4e65"
+    },
+    {
+      "path": "assets/fonts/Montserrat-Bold.ttf",
+      "sha1": "be7c1438070ab637e11716915e4e50903726dcc8"
+    },
+    {
+      "path": "assets/image/female_engineer_vector.png",
+      "sha1": "0846d1afc6ec51747e48be4903d05fecea4d40c5"
+    },
+    {
+      "path": "assets/image/female_engineer_vector2.png",
+      "sha1": "f337f86852d8d451fe5b82b838a174f7da0d050b"
+    },
+    {
+      "path": "assets/image/female_engineer_vector3.png",
+      "sha1": "6374a1e676fa4a8cd0e19ac12d2c9564272d950a"
+    },
+    {
+      "path": "assets/image/female_engineer_vector4.png",
+      "sha1": "4d15eea358c5dc41f580f792b760269b28c17741"
+    },
+    {
+      "path": "assets/image/female_engineer_vector5.png",
+      "sha1": "62a5d9da2f403e082684d93d50cc5a6a28e8c931"
+    },
+    {
+      "path": "assets/background/aibackground.png",
+      "sha1": "dbfd24f241ee99d260a1b46b734efeef963e0d85"
+    },
+    {
+      "path": "assets/background/green_wave_2.png",
+      "sha1": "f8b7c086114f2cf5a5cde719e3ead42236f4add8"
     }
   ]
 }

@@ -1,37 +1,5 @@
 import { MD3LightTheme, configureFonts } from 'react-native-paper';
-import {Font} from "react-native-paper/src/types";
-
-const fontConfig = {
-    headlineMedium: {
-        fontFamily: 'AnonymousPro-Bod',
-        fontWeight: '800' as Font['fontWeight'],
-        letterSpacing: 0.5,
-        lineHeight: 27,
-        fontSize: 22,
-    },
-    displaySmall: {
-        fontFamily: 'Bagel Fat One Regular',
-        fontWeight: '400' as Font['fontWeight'],
-        letterSpacing: 1.0,
-        lineHeight: 28,
-        fontSize: 17,
-    },
-    titleLarge: {
-        fontFamily: 'ZenDots-Regular',
-        fontWeight: '600' as Font['fontWeight'],
-        letterSpacing: 0.4,
-        lineHeight: 22,
-        fontSize: 20,
-    }
-    ,
-    titleMedium: {
-        fontFamily: 'Montserrat-ExtraBold',
-        // fontWeight: '600' as Font['fontWeight'],
-        // letterSpacing: 0.4,
-        // lineHeight: 22,
-        // fontSize: 20,
-    }
-};
+import { fontConfig } from "./typography"
 
 export const theme = {
     ...MD3LightTheme,
@@ -78,22 +46,15 @@ export const theme = {
         inverseOnSurface: '#fafafa',   // grey[50]
         inversePrimary: '#90caf9',     // blue[200]
 
-        // Special
-        shadow: '#000000',
-        scrim: 'rgba(0,0,0,0.5)',
-
-        // Elevation levels
-        elevation: {
-            level0: 'transparent',
-            level1: 'rgba(0,0,0,0.05)',
-            level2: 'rgba(0,0,0,0.08)',
-            level3: 'rgba(0,0,0,0.11)',
-            level4: 'rgba(0,0,0,0.12)',
-            level5: 'rgba(0,0,0,0.14)',
-        },
-
-        // Misc
-        backdrop: 'rgba(0,0,0,0.4)',
     },
-    fonts: configureFonts({config: fontConfig})
+    fonts: configureFonts({ config: fontConfig })
 };
+
+export const clayPalette = {
+    brown: '#A65E2E',
+    brownOrange: '#BE7436',
+    orange: '#D68A3D',
+    clay: '#E6B65D',
+    lightClay: '#F2D6AO',
+    veryLightClay: '#F9E8D6'
+}
