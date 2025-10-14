@@ -37,7 +37,6 @@
 		2D4CD7DD34E04FDEB5D1DD04 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E8C25EAA02740558772F1C1 /* Montserrat-SemiBoldItalic.ttf */; };
 		9601AE80BAB04996B1DBC6D3 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC8A1EDA2116490A8809E511 /* Montserrat-Thin.ttf */; };
 		2723109151C94A1D917DC882 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FF2EF5B7E0745148AA155CC /* Montserrat-ThinItalic.ttf */; };
-		E77DB82543854408B126052F /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 223E09C1256549DB9D84EFCE /* OFL.txt */; };
 		28D348565B054FCA84DE2BA4 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 487F15D7DABF481FAC88F20D /* README.txt */; };
 		C81ABC7E14864861962A92D1 /* Blinker-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84EDA22EDDAF4575863D9ABE /* Blinker-Bold.ttf */; };
 		A393A2973FC5485F85E284CC /* green_wave_2.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0E2CBFC097461B937CCAB1 /* green_wave_2.png */; };
@@ -48,6 +47,7 @@
 		DF0DD5ED93A74CE192A4153B /* female_engineer_vector3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA296CF247A4616A7C2FEBB /* female_engineer_vector3.png */; };
 		9DEE10B9D9DE491D82455EE3 /* female_engineer_vector4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0632BC592BDE4042BF5348F2 /* female_engineer_vector4.png */; };
 		3FF0584A2DE94C6CB5476BB9 /* female_engineer_vector5.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D2ED12638B48FAB5AE30B3 /* female_engineer_vector5.png */; };
+		235BEB3D77E24444B17BBB6B /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9E40FD0EFB6E44C1B4F91567 /* OFL.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +87,6 @@
 		4E8C25EAA02740558772F1C1 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Montserrat-SemiBoldItalic.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		CC8A1EDA2116490A8809E511 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; name = "Montserrat-Thin.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		1FF2EF5B7E0745148AA155CC /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Montserrat-ThinItalic.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		223E09C1256549DB9D84EFCE /* OFL.txt */ = {isa = PBXFileReference; name = "OFL.txt"; path = "../assets/fonts/Blinker/OFL.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		487F15D7DABF481FAC88F20D /* README.txt */ = {isa = PBXFileReference; name = "README.txt"; path = "../assets/fonts/Montserrat/README.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		84EDA22EDDAF4575863D9ABE /* Blinker-Bold.ttf */ = {isa = PBXFileReference; name = "Blinker-Bold.ttf"; path = "../assets/fonts/Blinker-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		ED0E2CBFC097461B937CCAB1 /* green_wave_2.png */ = {isa = PBXFileReference; name = "green_wave_2.png"; path = "../assets/background/green_wave_2.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
@@ -98,6 +97,7 @@
 		2EA296CF247A4616A7C2FEBB /* female_engineer_vector3.png */ = {isa = PBXFileReference; name = "female_engineer_vector3.png"; path = "../assets/image/female_engineer_vector3.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0632BC592BDE4042BF5348F2 /* female_engineer_vector4.png */ = {isa = PBXFileReference; name = "female_engineer_vector4.png"; path = "../assets/image/female_engineer_vector4.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		26D2ED12638B48FAB5AE30B3 /* female_engineer_vector5.png */ = {isa = PBXFileReference; name = "female_engineer_vector5.png"; path = "../assets/image/female_engineer_vector5.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9E40FD0EFB6E44C1B4F91567 /* OFL.txt */ = {isa = PBXFileReference; name = "OFL.txt"; path = "../assets/fonts/Blinker/OFL.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +201,6 @@
 				4E8C25EAA02740558772F1C1 /* Montserrat-SemiBoldItalic.ttf */,
 				CC8A1EDA2116490A8809E511 /* Montserrat-Thin.ttf */,
 				1FF2EF5B7E0745148AA155CC /* Montserrat-ThinItalic.ttf */,
-				223E09C1256549DB9D84EFCE /* OFL.txt */,
 				487F15D7DABF481FAC88F20D /* README.txt */,
 				84EDA22EDDAF4575863D9ABE /* Blinker-Bold.ttf */,
 				ED0E2CBFC097461B937CCAB1 /* green_wave_2.png */,
@@ -212,6 +211,7 @@
 				2EA296CF247A4616A7C2FEBB /* female_engineer_vector3.png */,
 				0632BC592BDE4042BF5348F2 /* female_engineer_vector4.png */,
 				26D2ED12638B48FAB5AE30B3 /* female_engineer_vector5.png */,
+				9E40FD0EFB6E44C1B4F91567 /* OFL.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -305,7 +305,6 @@
 				2D4CD7DD34E04FDEB5D1DD04 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				9601AE80BAB04996B1DBC6D3 /* Montserrat-Thin.ttf in Resources */,
 				2723109151C94A1D917DC882 /* Montserrat-ThinItalic.ttf in Resources */,
-				E77DB82543854408B126052F /* OFL.txt in Resources */,
 				28D348565B054FCA84DE2BA4 /* README.txt in Resources */,
 				C81ABC7E14864861962A92D1 /* Blinker-Bold.ttf in Resources */,
 				A393A2973FC5485F85E284CC /* green_wave_2.png in Resources */,
@@ -316,6 +315,7 @@
 				DF0DD5ED93A74CE192A4153B /* female_engineer_vector3.png in Resources */,
 				9DEE10B9D9DE491D82455EE3 /* female_engineer_vector4.png in Resources */,
 				3FF0584A2DE94C6CB5476BB9 /* female_engineer_vector5.png in Resources */,
+				235BEB3D77E24444B17BBB6B /* OFL.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

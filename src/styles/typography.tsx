@@ -1,11 +1,7 @@
-import {Font} from "react-native-paper/src/types";
 
 export const fontConfig = {
     titleMedium: {
         fontFamily: 'Montserrat-Medium',
-        // fontWeight: '600' as Font['fontWeight'],
-        // letterSpacing: 0.4,
-        // lineHeight: 22,
         fontSize: 12,
     },
     displaySmall: {
@@ -15,5 +11,16 @@ export const fontConfig = {
     headlineLarge: {
         fontFamily: 'Montserrat-Medium',
         fontSize: 22
+    },
+    // TextInput
+    // TextInput label text
+    bodySmall: {
+        fontFamily: 'Blinker-Regular',
+        fontSize: 18
+    },
+    // TextInput user input
+    bodyMedium: {
+        fontFamily: 'Montserrat-Regular',
+        fontSize: 20
     }
 };

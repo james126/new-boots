@@ -1,4 +1,4 @@
-npx react-native-asset
+rnpx react-native-asset
 npx react-native start
 npx react-native run-android   
 

@@ -2,11 +2,11 @@ import { StyleSheet, } from 'react-native';
 import { theme } from './theme'
 
 export const headingStyle = StyleSheet.create({
-    view: {
+    parentView: {
         display: 'flex',
         alignItems: 'center',
         marginHorizontal: 16,
-        flex: 1
+        flex: 1,
     },
     textView: {
         paddingTop: 12,

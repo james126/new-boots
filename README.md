@@ -1,5 +1,5 @@
-### Current Backlog
-Features:
+### Backlogs
+Backlog 1: Landing
 - [x] Transposed html filed to a React Native project
 - [x] Setup development environment for Android with virtual emulator
 - [x] Create a central CSS styling theme
@@ -10,11 +10,15 @@ Features:
 - [ ] Unit tests for core functionalities
 - [ ] Get feedback
 
-Bugs:
-- [ ] Strip back Card components - CSS overlay issue
+Backlog 2: Project Information
+- [x] Strip back Card components - CSS overlay issue
 - [x] Input field names look do not align with background
 - [ ] Commas and decimal places for units
-- [ ] Change date form to DD/MM/YYYY
+- [ ] Date format DD/MM/YYYY
+- [ ] Form components - previous, delete and next buttons with icons
+- [ ] Form components - progress bar at the bottom
+- [ ] Remove page pagination
+- [ ] Tweak CSS styling
 <hr />
 
 added the following to .gitignore

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Button, Card, Text } from 'react-native-paper';
-import { headingStyle } from "../styles/heading"
+import { headingStyle } from "../styles/headingStyle"
 import Svg, { Text as SvgText } from 'react-native-svg';
 import { useTheme } from 'react-native-paper';
 import { clayPalette } from '../styles/theme';
@@ -16,7 +16,7 @@ const Heading = () => {
     }, []);
 
     return (
-        <View style={headingStyle.view}>
+        <View style={headingStyle.parentView}>
             <View>
                 <Text variant="displaySmall" style={headingStyle.title}>
                     Property Development
