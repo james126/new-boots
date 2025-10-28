@@ -6,7 +6,7 @@
     "configurations": [
 
 {
-  "name": "Attach to Hermes app",
+  "mname": "Attach to Hermes app",
   "type": "reactnative",
   "request": "attach",
   "port": 9229,
