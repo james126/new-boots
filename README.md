@@ -7,8 +7,7 @@ Backlog 1: Landing
 - [ ] Put calculation functions in separate utility files
 - [x] Style background so cards scroll over it
 - [x] Style heading
-- [ ] Unit tests for core functionalities
-- [ ] Get feedback
+- [x] Unit tests for core functionalities
 
 Backlog 2: Project Information
 - [x] Strip back Card components - CSS overlay issue
