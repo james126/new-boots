@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import { Icon } from 'react-native-paper';
 import { Breakpoint } from '../styles/breakpoints';
@@ -12,11 +12,13 @@ import { clayPalette } from '../styles/theme';
 interface ProgressIndicatorProps {
   currentPage: number;
   onStepPress: (position: number) => void;
+  labels: string[];
   breakpoint: Breakpoint;
 }
 
-export default function ProgressIndicator({ currentPage, onStepPress, breakpoint }: ProgressIndicatorProps) {
-  const STEP_LABELS = ['home', '', '', '','results'];
+
+
+export default function ProgressIndicator({ currentPage, onStepPress, labels, breakpoint }: ProgressIndicatorProps) {
   const [style, setStyle] = React.useState(progressIndicatorLarge);
   const [indicatorStyles, setIndicatorStyles] = React.useState(largeIndicatorStyles);
 
@@ -33,7 +35,7 @@ export default function ProgressIndicator({ currentPage, onStepPress, breakpoint
     }
   }, [breakpoint, style, indicatorStyles]);
 
-  const getStepIndicatorIconConfig = ({position, stepStatus,}: {position: number; stepStatus: string}) => {
+  const getStepIndicatorIconConfig = ({position, stepStatus, breakpoint: Breakpoint}: {position: number; stepStatus: string}) => {
   const iconConfig = {
     source: 'rss',
     color: stepStatus === 'finished' ? '#ffffff' : clayPalette.brownOrange,
@@ -102,12 +104,45 @@ export default function ProgressIndicator({ currentPage, onStepPress, breakpoint
           onPress={onStepPress}
           renderStepIndicator={renderStepIndicator}
           renderLabel={renderLabel}
-          labels={STEP_LABELS}
+          labels={labels}
         />
       </View>
     </View>
   );
 }
 
+ const getStepIndicatorIconConfig = ({position, stepStatus, breakpoint: Breakpoint}: {position: number; stepStatus: string}) => {
+  const iconConfig = {
+    source: 'rss',
+    color: stepStatus === 'finished' ? '#ffffff' : clayPalette.brownOrange,
+    size: breakpoint === Breakpoint.LARGE ? 16 : breakpoint === Breakpoint.MEDIUM ? 15 : 14,
+  };
+  switch (position) {
+    case 0: {
+      iconConfig.source = 'home';
+      break;
+    }
+    case 1: {
+      iconConfig.source = 'information';
+      break;
+    }
+    case 2: {
+      iconConfig.source = 'currency-usd';
+      break;
+    }
+    case 3: {
+      iconConfig.source = 'home-group-plus';
+      break;
+    }
+    case 4: {
+      iconConfig.source = 'file-document';
+      break;
+    }
+    default: {
+      break;
+    }
+  }
+  return iconConfig;
+};
 
 

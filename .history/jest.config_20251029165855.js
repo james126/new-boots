@@ -14,5 +14,4 @@ module.exports = {
     '!src/**/*.d.ts',
     '!src/types/**',
   ],
-  testEnvironment: 'node',
 };

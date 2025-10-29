@@ -57,6 +57,15 @@ const Calculator = () => {
     pagerRef.current?.setPage(position);
   };
 
+  // Labels for the progress indicator
+  const stepLabels = [
+    'Home',
+    '',
+    '',
+    '',
+    'Results'
+  ];
+
   return (
     <View style={{ flex: 1, position: 'relative' }}>
       <View style={backgroundStyle.view}>
@@ -102,6 +111,7 @@ const Calculator = () => {
           <ProgressIndicator
             currentPage={page}
             onStepPress={onStepPress}
+            labels={stepLabels}
             breakpoint={breakpoint}
           />
         </View>

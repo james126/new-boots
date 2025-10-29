@@ -2,7 +2,7 @@ module.exports = {
   preset: 'react-native',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|@react-navigation|react-native-vector-icons)/)',
+    'node_modules/(?!(react-native|@react-native|@react-navigation)/)',
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testMatch: [
@@ -14,5 +14,4 @@ module.exports = {
     '!src/**/*.d.ts',
     '!src/types/**',
   ],
-  testEnvironment: 'node',
 };

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import { Icon } from 'react-native-paper';
 import { Breakpoint } from '../styles/breakpoints';
@@ -12,11 +12,12 @@ import { clayPalette } from '../styles/theme';
 interface ProgressIndicatorProps {
   currentPage: number;
   onStepPress: (position: number) => void;
+  labels: string[];
   breakpoint: Breakpoint;
 }
 
-export default function ProgressIndicator({ currentPage, onStepPress, breakpoint }: ProgressIndicatorProps) {
-  const STEP_LABELS = ['home', '', '', '','results'];
+
+export default function ProgressIndicator({ currentPage, onStepPress, labels, breakpoint }: ProgressIndicatorProps) {
   const [style, setStyle] = React.useState(progressIndicatorLarge);
   const [indicatorStyles, setIndicatorStyles] = React.useState(largeIndicatorStyles);
 
@@ -33,7 +34,10 @@ export default function ProgressIndicator({ currentPage, onStepPress, breakpoint
     }
   }, [breakpoint, style, indicatorStyles]);
 
-  const getStepIndicatorIconConfig = ({position, stepStatus,}: {position: number; stepStatus: string}) => {
+  const getStepIndicatorIconConfig = ({position,stepStatus,}: {
+  position: number;
+  stepStatus: string;
+}) => {
   const iconConfig = {
     source: 'rss',
     color: stepStatus === 'finished' ? '#ffffff' : clayPalette.brownOrange,
@@ -102,12 +106,56 @@ export default function ProgressIndicator({ currentPage, onStepPress, breakpoint
           onPress={onStepPress}
           renderStepIndicator={renderStepIndicator}
           renderLabel={renderLabel}
-          labels={STEP_LABELS}
+          labels={labels}
         />
       </View>
     </View>
   );
 }
 
+const firstIndicatorStyles = {
+  stepIndicatorSize: 30,
+  currentStepIndicatorSize: 40,
+  separatorStrokeWidth: 3,
+  currentStepStrokeWidth: 5,
+  separatorFinishedColor: '#4aae4f',
+  separatorUnFinishedColor: '#a4d4a5',
+  stepIndicatorFinishedColor: '#4aae4f',
+  stepIndicatorUnFinishedColor: '#a4d4a5',
+  stepIndicatorCurrentColor: '#ffffff',
+  stepIndicatorLabelFontSize: 15,
+  currentStepIndicatorLabelFontSize: 15,
+  stepIndicatorLabelCurrentColor: '#000000',
+  stepIndicatorLabelFinishedColor: '#ffffff',
+  stepIndicatorLabelUnFinishedColor: 'rgba(255,255,255,0.5)',
+  labelColor: '#666666',
+  labelSize: 12,
+  currentStepLabelColor: '#4aae4f',
+};
+
+const secondIndicatorStyles = {
+  stepIndicatorSize: 30,
+  currentStepIndicatorSize: 40,
+  separatorStrokeWidth: 3,
+  currentStepStrokeWidth: 3,
+  stepStrokeCurrentColor: '#fe7013',
+  stepStrokeWidth: 3,
+  separatorStrokeFinishedWidth: 4,
+  stepStrokeFinishedColor: '#fe7013',
+  stepStrokeUnFinishedColor: '#aaaaaa',
+  separatorFinishedColor: '#fe7013',
+  separatorUnFinishedColor: '#aaaaaa',
+  stepIndicatorFinishedColor: '#fe7013',
+  stepIndicatorUnFinishedColor: '#ffffff',
+  stepIndicatorCurrentColor: '#ffffff',
+  stepIndicatorLabelFontSize: 13,
+  currentStepIndicatorLabelFontSize: 13,
+  stepIndicatorLabelCurrentColor: '#fe7013',
+  stepIndicatorLabelFinishedColor: '#ffffff',
+  stepIndicatorLabelUnFinishedColor: '#aaaaaa',
+  labelColor: '#999999',
+  labelSize: 13,
+  currentStepLabelColor: '#fe7013',
+};
 
 

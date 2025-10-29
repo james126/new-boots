@@ -16,7 +16,7 @@ interface ProgressIndicatorProps {
 }
 
 export default function ProgressIndicator({ currentPage, onStepPress, breakpoint }: ProgressIndicatorProps) {
-  const STEP_LABELS = ['home', '', '', '','results'];
+  const STEP_LABELS = ['home', '', '', '','Results'];
   const [style, setStyle] = React.useState(progressIndicatorLarge);
   const [indicatorStyles, setIndicatorStyles] = React.useState(largeIndicatorStyles);
 

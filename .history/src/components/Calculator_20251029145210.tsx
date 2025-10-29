@@ -44,6 +44,18 @@ const Calculator = () => {
     }
   };
 
+  const handleSwipeNavigation = (direction: 'left' | 'right') => {
+    if (direction === 'right' && page < TOTAL_PAGES - 1) {
+      const nextPage = page + 1;
+      pagerRef.current?.setPage(nextPage);
+      setPage(nextPage);
+    } else if (direction === 'left' && page > 0) {
+      const prevPage = page - 1;
+      pagerRef.current?.setPage(prevPage);
+      setPage(prevPage);
+    }
+  };
+
   const handleNextPage = () => {
     if (page < TOTAL_PAGES) {
       const nextPage = page + 1;
@@ -56,6 +68,15 @@ const Calculator = () => {
     setPage(position);
     pagerRef.current?.setPage(position);
   };
+
+  // Labels for the progress indicator
+  const stepLabels = [
+    'Home',
+    '',
+    '',
+    '',
+    'Results'
+  ];
 
   return (
     <View style={{ flex: 1, position: 'relative' }}>
@@ -102,6 +123,7 @@ const Calculator = () => {
           <ProgressIndicator
             currentPage={page}
             onStepPress={onStepPress}
+            labels={stepLabels}
             breakpoint={breakpoint}
           />
         </View>
